@@ -5,17 +5,13 @@ import os
 os.environ['TZ'] = 'US/Central'
 time.tzset()
 
-def clock():
-    try:
-        t = time.localtime()
-        now = time.strftime('%H%M', t)
-        print(now)
-        flp.print_str(str(now))
-        flp.show()
-        time.sleep(10)
-        clock()
-    except Exception as e:
-        print(e)
-        clock()
-
-clock()
+while True:
+    flp.clear()
+    str_time = time.strftime("%H%M")
+    flp.print_number_str(str_time)
+    if int(time.time()) % 2 == 0 :
+        flp.set_decimal(1, 1)
+    else:
+        flp.set_decimal(1, 0)
+    flp.show()
+    time.sleep(0.1)
